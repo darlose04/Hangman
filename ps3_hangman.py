@@ -1,17 +1,9 @@
 # Hangman game
-#
-
-# -----------------------------------
-# Helper code
-# You don't need to understand this helper code,
-# but you will have to know how to use the functionbs
-# (so be sure to read the docstrings!)
 
 import random
 import string
 
 WORDLIST_FILENAME = "words.txt"
-
 
 def loadWords():
     """
@@ -30,7 +22,6 @@ def loadWords():
     print(len(wordlist), "words loaded.")
     return wordlist
 
-
 def chooseWord(wordlist):
     """
     wordlist (list): list of words (strings)
@@ -39,14 +30,8 @@ def chooseWord(wordlist):
     """
     return random.choice(wordlist)
 
-# end of helper code
-# -----------------------------------
-
-
-# Load the list of words into the variable wordlist
-# so that it can be accessed from anywhere in the program
+# Load the list of words into the variable wordlist so that it can be accessed from anywhere in the program
 wordlist = loadWords()
-
 
 def isWordGuessed(secretWord, lettersGuessed):
     '''
@@ -57,7 +42,6 @@ def isWordGuessed(secretWord, lettersGuessed):
     '''
     secret_word_list = list(secretWord)
     return set(secret_word_list).issubset(lettersGuessed)
-
 
 def getGuessedWord(secretWord, lettersGuessed):
     '''
@@ -75,7 +59,6 @@ def getGuessedWord(secretWord, lettersGuessed):
             guessed_word_list.append('_ ')
     return ''.join(guessed_word_list)
 
-
 def getAvailableLetters(lettersGuessed):
     '''
     lettersGuessed: list, what letters have been guessed so far
@@ -89,7 +72,6 @@ def getAvailableLetters(lettersGuessed):
         if item not in lettersGuessed:
             available_letters.append(item)
     return ''.join(available_letters)
-
 
 def hangman(secretWord):
     '''
@@ -159,11 +141,6 @@ def hangman(secretWord):
             if guesses_left == 0:
                 print('Sorry, you ran out of guesses. The word was {}.'.format(secretWord))
                 break
-
-# When you've completed your hangman function, uncomment these two lines
-# and run this file to test! (hint: you might want to pick your own
-# secretWord while you're testing)
-
 
 secretWord = chooseWord(wordlist).lower()
 #secretWord = 'secret'
